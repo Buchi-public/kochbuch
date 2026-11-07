@@ -46,7 +46,7 @@ function fmtQty(z, f, shop) {
   if (h === 0) return '½';
   return frac(h);
 }
-const PL = { 'Ei': 'Eier', 'Zwiebel': 'Zwiebeln', 'Schalotte': 'Schalotten', 'Knoblauchzehe': 'Knoblauchzehen', 'Erdapfel': 'Erdäpfel', 'Vanilleschote': 'Vanilleschoten' };
+const PL = { 'Ei': 'Eier', 'Zwiebel': 'Zwiebeln', 'Schalotte': 'Schalotten', 'Knoblauchzehe': 'Knoblauchzehen', 'Knoblauchknolle': 'Knoblauchknollen', 'Karotte': 'Karotten', 'Tomate': 'Tomaten', 'Erdapfel': 'Erdäpfel', 'Vanilleschote': 'Vanilleschoten' };
 function plural(n) { return n.replace(/^(mehliger |kleine |große )?([A-ZÄÖÜ][a-zäöüß]+)/, (m, adj, w) => PL[w] ? (adj ? adj.replace(/r $/, 'e ').replace(/e $/, 'e ') : '') + PL[w] : m); }
 function fmtName(z, f, tot) {
   const v = tot != null ? tot : (z.menge == null ? 0 : z.menge * f);
