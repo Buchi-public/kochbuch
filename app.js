@@ -3,7 +3,7 @@
 'use strict';
 const KB = window.KB, R = KB.rezepte, byId = {}; R.forEach(r => byId[r.id] = r);
 const KEY = 'kochbuch';
-const EMOJI = { 'Suppe': '🍲', 'Hauptgericht': '🍽️', 'Salat & Beilage': '🥗', 'Kuchen & Gebäck': '🍰', 'Dessert': '🍎' };
+const EMOJI = { 'Vorspeise & Dip': '🫓', 'Suppe': '🍲', 'Hauptgericht': '🍽️', 'Salat & Beilage': '🥗', 'Kuchen & Gebäck': '🍰', 'Dessert': '🍎' };
 const $ = s => document.querySelector(s);
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
