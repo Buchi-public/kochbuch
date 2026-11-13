@@ -68,7 +68,7 @@ function go(v, id) { view = v; cur = id || null; render(); window.scrollTo(0, 0)
 
 function card(r) {
   return `<div class="rc glass" data-open="${r.id}" role="button" tabindex="0">
-    <span class="em">${EMOJI[r.kategorie] || '🍴'}</span>
+    ${r.foto ? `<img class="thumb" src="${esc(r.foto)}" alt="" loading="lazy">` : `<span class="em">${EMOJI[r.kategorie] || '🍴'}</span>`}
     <span class="tx"><b>${esc(r.titel)}</b><small>${esc(r.kurz)}</small>
     <span class="meta">${r.portionen} ${esc(r.portionen_einheit)} · ca. ${r.gesamtzeit_min} Min.${S.done[r.id] ? ' · ✓ gekocht' : ''}</span></span>
     <button class="star ${S.fav[r.id] ? 'on' : ''}" data-fav="${r.id}" aria-label="Favorit">${S.fav[r.id] ? '★' : '☆'}</button></div>`;
@@ -96,7 +96,7 @@ function renderListe(onlyFav) {
 
 function renderRezept(r) {
   const p = portOf(r), f = p / r.portionen, kuchen = r.kategorie === 'Kuchen & Gebäck';
-  let h = `<div class="hero glass"><h2>${esc(r.titel)}</h2><p>${esc(r.kurz)}</p>
+  let h = (r.foto ? `<img class="heroimg" src="${esc(r.foto)}" alt="${esc(r.titel)}">` : '') + `<div class="hero glass"><h2>${esc(r.titel)}</h2><p>${esc(r.kurz)}</p>
     <div class="tags"><span class="tag">⏱ ca. ${r.gesamtzeit_min} Min.</span>${r.tags.map(t => `<span class="tag">${esc(t)}</span>`).join('')}</div></div>`;
   h += `<div class="scale glass"><div class="step"><button data-p="-1" aria-label="weniger">−</button><span id="pv">${p} ${esc(r.portionen_einheit)}</span><button data-p="1" aria-label="mehr">+</button></div>
     <div class="seg">${[0.5, 1, 2, 3].map(m => `<button data-m="${m}" class="${Math.abs(f - m) < 1e-9 ? 'on' : ''}">${m === 0.5 ? '½' : m}×</button>`).join('')}</div>
